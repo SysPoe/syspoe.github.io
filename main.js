@@ -4,6 +4,7 @@ function onLoad() {
 		Instamessage();
 	}
 	var worker = new Worker('http://combinatronics.com/SysPoe/syspoe.github.io/main/paralax.js');
+	worker.postMessage("start");
 
 }
 function Instamessage() {
