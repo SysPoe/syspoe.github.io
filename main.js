@@ -3,7 +3,6 @@ function onLoad() {
 	if (window.location.hash == "#Instamessage") {
 		Instamessage();
 	}
-	setTimeout(scrollLoop(), 1000);
 }
 function Instamessage() {
 	document.getElementById('nav').style.display = 'none';
@@ -22,13 +21,10 @@ var xScrollPosition;
 var yScrollPosition;
 
 function scrollLoop() {
-	while (true) {
-		xScrollPosition = window.scrollX;
-		yScrollPosition = window.scrollY;
+	xScrollPosition = window.scrollX;
+	yScrollPosition = window.scrollY;
 
-		setTranslate(0, yScrollPosition * -0.2, document.getElementById("test"));
-
-	}
+	setTranslate(0, yScrollPosition * -0.2, document.getElementById("test"));
 }
 
 function setTranslate(xPos, yPos, el) {
