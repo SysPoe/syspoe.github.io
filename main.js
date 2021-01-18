@@ -16,18 +16,3 @@ function ProjectsBySyspoe() {
 	document.title = "Projects By SysPoe";
 	window.location.hash = "";
 }
-
-
-var xScrollPosition;
-var yScrollPosition;
-
-function scrollLoop() {
-	xScrollPosition = window.scrollX;
-	yScrollPosition = window.scrollY;
-
-	setTranslate(0, yScrollPosition * -0.2, document.getElementById("test"));
-}
-
-function setTranslate(xPos, yPos, el) {
-	el.style.transform = 'translate3d(' + xPos + 'px,' + yPos + 'px,0)';
-}

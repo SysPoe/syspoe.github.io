@@ -119,14 +119,6 @@ to {
 		text-decoration: underline;
 	}
 
-#nav {
-	margin-top: 1vh;
-	text-align: center;
-	color: #ffffff;
-	font-family: sans-serif;
-	font-size: 20px;
-}
-
 #instamessage {
 	display: none;
 }
