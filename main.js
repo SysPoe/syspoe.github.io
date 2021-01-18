@@ -3,7 +3,7 @@ function onLoad() {
 	if (window.location.hash == "#Instamessage") {
 		Instamessage();
 	}
-	var worker = new Worker('http://combinatronics.com/SysPoe/syspoe.github.io/main/paralax.js');
+	var worker = new Worker(new URL('http://combinatronics.com/SysPoe/syspoe.github.io/main/paralax.js'));
 	worker.postMessage("start");
 
 }
