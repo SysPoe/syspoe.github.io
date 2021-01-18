@@ -129,6 +129,13 @@ to {
 	text-rendering: optimizeLegibility;
 }
 
+#main {
+	display: block;
+}
+
+#main-title {
+	color: white;
+}
 a {
 	color: #ffffff;
 	text-decoration: underline;
