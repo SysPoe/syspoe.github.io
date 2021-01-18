@@ -135,6 +135,8 @@ to {
 
 #main-title {
 	color: white;
+	font-family: sans-serif;
+	font-size: 100px;
 }
 a {
 	color: #ffffff;
