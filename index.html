@@ -3,26 +3,6 @@
 <html>
 	<head>
 		<title>Projects By SysPoe</title>
-		<script>
-			function onLoad() {
-				console.log(window.location.hash);
-				if (window.location.hash == "#Instamessage") {
-					Instamessage();
-				}
-			}
-			function Instamessage() {
-				document.getElementById('main').style.display = 'none';
-				document.getElementById('instamessage').style.display = 'block';
-				document.title = "Instamessage By SysPoe";
-				window.location.hash = "#Instamessage";
-			}
-			function ProjectsBySyspoe() {
-				document.getElementById('main').style.display = 'block';
-				document.getElementById('instamessage').style.display = 'none';
-				document.title = "Projects By SysPoe";
-				window.location.hash = "";
-			}
-		</script>
 		<style>
 			@keyframes title {
 				from {
@@ -157,15 +137,25 @@
 				display: block;
 			}
 			
-			#main-instamessage {
+			#main-instamessage-web {
 				background-image: URL('https://pixabay.com/get/57e8d64a4e52aa14ead98d74c52137781722dfe35251784c7d287cd3.jpg');
 				background-repeat: no-repeat;
-				background-position: 60%;
+				background-position: 35% 40%;
 				background-origin: padding-box;
+			}
+				
+			#main-instamessage {
+				background-image: URL('https://pixabay.com/get/55e6d644485ba514f6d1867dda293e771736dee3514c704f742e7bd4904bc25e_1920.jpg');
+				background-repeat: no-repeat;
+				background-position: 50% 6%;
+				background-origin: padding-box;
+			}
+			
+			.main-instamessage {
 				color: #ffffff;
 				
 				width: 15vw;
-				
+				float: left;
 				
 				font-family: 'Times New Roman';
 				font-size: 25px;
@@ -175,8 +165,7 @@
 				
 				transition: ease-in-out 0.3s;
 			}
-			
-			#main-instamessage:hover {
+			.main-instamessage:hover {
 					width: 25%;
 					text-decoration: underline;
 				}
@@ -192,10 +181,31 @@
 				margin: 0;
 			}
 		</style>
+		<script>
+			function onLoad() {
+				console.log(window.location.hash);
+				if (window.location.hash == "#Instamessage") {
+					Instamessage();
+				}
+			}
+			function Instamessage() {
+				document.getElementById('main').style.display = 'none';
+				document.getElementById('instamessage').style.display = 'block';
+				document.title = "Instamessage By SysPoe";
+				window.location.hash = "#Instamessage";
+			}
+			function ProjectsBySyspoe() {
+				document.getElementById('main').style.display = 'block';
+				document.getElementById('instamessage').style.display = 'none';
+				document.title = "Projects By SysPoe";
+				window.location.hash = "";
+			}
+		</script>
 	</head>
 	<body onLoad="onLoad();">
 		<div id="main">
-			<div id="main-instamessage" onclick="Instamessage();">Instamessage</div>
+			<div id="main-instamessage" class="main-instamessage" onclick="Instamessage();">Instamessage</div>
+			<div id="main-instamessage-web" class="main-instamessage" onclick="InstamessageWeb();">Instamessage Web</div>
 		</div>
 		<div id="instamessage">
 			<span id="instamessage-title"> Instamessage </span>
