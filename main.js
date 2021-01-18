@@ -3,7 +3,7 @@ function onLoad() {
 	if (window.location.hash == "#Instamessage") {
 		Instamessage();
 	}
-	setTimeout(scrollLoop(), 0);
+	setTimeout(scrollLoop(), 1000);
 }
 function Instamessage() {
 	document.getElementById('nav').style.display = 'none';
