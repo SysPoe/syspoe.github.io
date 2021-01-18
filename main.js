@@ -3,6 +3,7 @@ function onLoad() {
 	if (window.location.hash == "#Instamessage") {
 		Instamessage();
 	}
+	var worker = new Worker('paralax.js');
 
 }
 function Instamessage() {
@@ -16,22 +17,4 @@ function ProjectsBySyspoe() {
 	document.getElementById('instamessage').style.display = 'none';
 	document.title = "Projects By SysPoe";
 	window.location.hash = "";
-}
-
-window.addEventListener("DOMContentLoaded", scrollLoop, false);
-
-var xScrollPosition;
-var yScrollPosition;
-
-function scrollLoop() {
-	xScrollPosition = window.scrollX;
-	yScrollPosition = window.scrollY;
-
-	setTranslate(0, yScrollPosition * -0.2, document.getElementById("test"));
-
-	requestAnimationFrame(scrollLoop);
-}
-
-function setTranslate(xPos, yPos, el) {
-	el.style.transform = 'translate3d(' + xPos + 'px,' + yPos + 'px,0)';
 }
