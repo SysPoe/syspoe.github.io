@@ -283,6 +283,8 @@
 					document.getElementById("web-error").innerHTML = message.content;
 				} else if (message.type == "client") {
 					console.log("Message from server: " + message.type + " " + message.content);
+				} else if (message.type == "chat") {
+					document.getElementById("web-chat").innerHTML = message.content.replace(/\n/g, "<br />");;
 				}
 				else {
 					console.log("Recieved from server: "+e.data);
@@ -293,6 +295,9 @@
 			}
 			function sendMessage() {
 				websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
+			}
+			function getChat() {
+				websocket.send(JSON.stringify({type: "get", content: "chat", token: uuid}));
 			}
 		</script>
 	</head>
