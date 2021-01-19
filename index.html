@@ -232,6 +232,12 @@
 				} else if (window.location.hash == "#Instamessage-Web") {
 					InstamessageWeb();
 				}
+				document.getElementById("web-send-message").addEventListener("keyup", function(event) {
+					if (event.keyCode == 13) {
+						websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
+						document.getElementById("web-send-message").value = "";
+					}
+				});
 			}
 			function Instamessage() {
 				document.getElementById('main').style.display = 'none';
@@ -304,6 +310,7 @@
 			}
 			function sendMessage() {
 				websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
+				document.getElementById("web-send-message").value = "";
 			}
 		</script>
 	</head>
