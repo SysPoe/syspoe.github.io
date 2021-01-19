@@ -126,13 +126,6 @@
 			#instamessage {
 				display: none;
 			}
-			
-			* {
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-				text-rendering: optimizeLegibility;
-			}
-			
 			#main {
 				display: block;
 			}
@@ -169,6 +162,25 @@
 					width: 25%;
 					text-decoration: underline;
 				}
+				
+			#instamessage-web {
+				display: none;
+				color: white;
+			}
+			
+			#web-input {
+				font-family: 'Arial';
+				padding: 10px;
+			}
+			
+			#web-ip,#web-password {
+				color: white;
+				background-color: black;
+				border-color: white;
+				border-width: 2px;
+				border-radius: 10px;
+				text-align: center;
+			}
 			
 			a {
 				color: #ffffff;
@@ -180,12 +192,30 @@
 				background-color: #0f0f0f;
 				margin: 0;
 			}
+			
+			* {
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				text-rendering: optimizeLegibility;
+				
+				margin: 0;
+				
+				-ms-user-select:none;
+				-moz-user-select:none;
+				-webkit-user-select:none;
+				-webkit-touch-callout: none;
+				-khtml-user-select: none;
+				user-select:none;
+			}
+			
 		</style>
 		<script>
 			function onLoad() {
 				console.log(window.location.hash);
 				if (window.location.hash == "#Instamessage") {
 					Instamessage();
+				} else if (window.location.hash == "#Instamessage-Web") {
+					InstamessageWeb();
 				}
 			}
 			function Instamessage() {
@@ -200,6 +230,12 @@
 				document.title = "Projects By SysPoe";
 				window.location.hash = "";
 			}
+			function InstamessageWeb() {
+				document.getElementById('main').style.display = 'none';
+				document.getElementById('instamessage-web').style.display = 'block';
+				document.title = "Instamessage Web Client";
+				window.location.hash = "#Instamessage-Web";
+			}
 		</script>
 	</head>
 	<body onLoad="onLoad();">
@@ -213,6 +249,15 @@
 			<span id="instamessage-projectPage" onclick="window.location.href = 'https://github.com/SysPoe/Instamessage'"> See On Github </span>
 			<span id="instamessage-releases" onclick="window.location.href = 'https://github.com/SysPoe/Instamessage/releases'"> Download </span>
 			<span id="instamessage-otherprojects" onclick="ProjectsBySyspoe();"> Other Projects </span>
+		</div>
+		<div id="instamessage-web">
+			<div id="web-input" align="center">
+				<br /><input type="text" id="web-ip" placeholder="Enter IP Address"/>
+				<br />
+				<br /><input  id="web-password" placeholder="Enter Password"/>
+				<br />
+				<br /><button id="web-connect">Connect</button>
+			</div>
 		</div>
 	</body>
 </html>
