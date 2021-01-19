@@ -179,7 +179,8 @@
 				border-color: white;
 				border-width: 2px;
 				border-radius: 10px;
-				text-align: center;
+				padding-left: 10px;
+				padding-right: 5px;
 			}
 			
 			a {
@@ -236,6 +237,41 @@
 				document.title = "Instamessage Web Client";
 				window.location.hash = "#Instamessage-Web";
 			}
+			var websocket;
+			var password;
+			var ipAddress;
+			var token;
+			function connect() {
+				ipAddress = document.getElementById("web-ip").value;
+				password = document.getElementById("web-password").value;
+				
+				websocket = new WebSocket("ws://"+ipAddress+":63439");
+				websocket.onopen = onOpen;
+				websocket.onmessage = onMessage;
+				
+			}
+			function onOpen() {
+				var tosendJSON = { type: "validate", content: password };
+				var tosend = JSON.stringify(tosendJSON);
+				console.log("Connected to server... authenticating");
+				websocket.send(tosend);
+			}
+			function onMessage(e) {
+				var message = JSON.parse(e.data);
+				if (message.type == "token") {
+					token = message.content;
+					console.log("verified, token is: "+token);
+					document.getElementById("web-error").innerHTML = "";
+				} else if (message.type == "error") {
+					console.log("Error: "+message.content);
+					document.getElementById("web-error").innerHTML = message.content;
+				} else if (message.type == "client") {
+					console.log("Message from server: " + message.type + " " + message.content);
+				}
+				else {
+					console.log("Recieved from server: "+e.data);
+				}
+			}
 		</script>
 	</head>
 	<body onLoad="onLoad();">
@@ -254,9 +290,11 @@
 			<div id="web-input" align="center">
 				<br /><input type="text" id="web-ip" placeholder="Enter IP Address"/>
 				<br />
-				<br /><input  id="web-password" placeholder="Enter Password"/>
+				<br /><input type="password" id="web-password" placeholder="Enter Password"/>
 				<br />
-				<br /><button id="web-connect">Connect</button>
+				<br /><button id="web-connect" onclick="connect();
+				">Connect</button>
+				<br /><span id="web-error" style="color: red;"></span>
 			</div>
 		</div>
 	</body>
