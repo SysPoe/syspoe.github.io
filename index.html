@@ -248,6 +248,7 @@
 				websocket = new WebSocket("ws://"+ipAddress+":63439");
 				websocket.onopen = onOpen;
 				websocket.onmessage = onMessage;
+				websocket.onerror = onError;
 				
 			}
 			function onOpen() {
@@ -262,6 +263,7 @@
 					token = message.content;
 					console.log("verified, token is: "+token);
 					document.getElementById("web-error").innerHTML = "";
+					document.getElementById("web-input").style.display = "none";
 				} else if (message.type == "error") {
 					console.log("Error: "+message.content);
 					document.getElementById("web-error").innerHTML = message.content;
@@ -271,6 +273,9 @@
 				else {
 					console.log("Recieved from server: "+e.data);
 				}
+			}
+			function onError() {
+				document.getElementById("web-error").innerHTML = "Unable to connect to host: server not found.";
 			}
 		</script>
 	</head>
