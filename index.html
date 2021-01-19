@@ -183,6 +183,19 @@
 				padding-right: 5px;
 			}
 			
+			#web-chat-screen {
+				display: none;
+			}
+			
+			#web-chat {
+				width: 50vw;
+				height: 20vh;
+				border-color: #ffffff;
+				border-radius: 10px;
+				border-width: 2px;
+				border-style: solid;
+			}
+			
 			a {
 				color: #ffffff;
 				text-decoration: underline;
@@ -240,7 +253,7 @@
 			var websocket;
 			var password;
 			var ipAddress;
-			var token;
+			var uuid = 0;
 			function connect() {
 				ipAddress = document.getElementById("web-ip").value;
 				password = document.getElementById("web-password").value;
@@ -252,7 +265,7 @@
 				
 			}
 			function onOpen() {
-				var tosendJSON = { type: "validate", content: password };
+				var tosendJSON = { type: "validate", content: password, token: uuid};
 				var tosend = JSON.stringify(tosendJSON);
 				console.log("Connected to server... authenticating");
 				websocket.send(tosend);
@@ -260,10 +273,11 @@
 			function onMessage(e) {
 				var message = JSON.parse(e.data);
 				if (message.type == "token") {
-					token = message.content;
-					console.log("verified, token is: "+token);
+					uuid = message.content;
+					console.log("verified, token is: "+uuid);
 					document.getElementById("web-error").innerHTML = "";
 					document.getElementById("web-input").style.display = "none";
+					document.getElementById("web-chat-screen").style.display = "block";
 				} else if (message.type == "error") {
 					console.log("Error: "+message.content);
 					document.getElementById("web-error").innerHTML = message.content;
@@ -276,6 +290,9 @@
 			}
 			function onError() {
 				document.getElementById("web-error").innerHTML = "Unable to connect to host: server not found.";
+			}
+			function sendMessage() {
+				websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
 			}
 		</script>
 	</head>
@@ -300,6 +317,14 @@
 				<br /><button id="web-connect" onclick="connect();
 				">Connect</button>
 				<br /><span id="web-error" style="color: red;"></span>
+			</div>
+			<div id="web-chat-screen" align="center">
+				<div id="web-chat">
+					a
+				</div>
+				<br />
+				<input placeholder="Send a message" id="web-send-message">
+				<button onclick="sendMessage();">Send</button>
 			</div>
 		</div>
 	</body>
