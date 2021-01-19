@@ -173,7 +173,7 @@
 				padding: 10px;
 			}
 			
-			#web-ip,#web-password {
+			.web-input {
 				color: white;
 				background-color: black;
 				border-color: white;
@@ -189,11 +189,12 @@
 			
 			#web-chat {
 				width: 50vw;
-				height: 20vh;
+				height: 90vh;
 				border-color: #ffffff;
 				border-radius: 10px;
 				border-width: 2px;
 				border-style: solid;
+				overflow: auto;
 			}
 			
 			a {
@@ -254,6 +255,7 @@
 			var password;
 			var ipAddress;
 			var uuid = 0;
+			var previousChat = "";
 			function connect() {
 				ipAddress = document.getElementById("web-ip").value;
 				password = document.getElementById("web-password").value;
@@ -278,13 +280,20 @@
 					document.getElementById("web-error").innerHTML = "";
 					document.getElementById("web-input").style.display = "none";
 					document.getElementById("web-chat-screen").style.display = "block";
+					var toSendJSON = { type: "username", content: document.getElementById("web-username").value, token: uuid};
+					var toSend = JSON.stringify(toSendJSON);
+					websocket.send(toSend);
 				} else if (message.type == "error") {
 					console.log("Error: "+message.content);
 					document.getElementById("web-error").innerHTML = message.content;
 				} else if (message.type == "client") {
 					console.log("Message from server: " + message.type + " " + message.content);
 				} else if (message.type == "chat") {
-					document.getElementById("web-chat").innerHTML = message.content.replace(/\n/g, "<br />");;
+					document.getElementById("web-chat").innerHTML = message.content.replace(/\n/g, "<br />");
+					if (message.content.replace(/\n/g, "<br />") != previousChat) {
+						document.getElementById("web-chat").scrollTop = document.getElementById("web-chat").scrollHeight;
+					}
+					previousChat = message.content.replace(/\n/g, "<br />");
 				}
 				else {
 					console.log("Recieved from server: "+e.data);
@@ -295,9 +304,6 @@
 			}
 			function sendMessage() {
 				websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
-			}
-			function getChat() {
-				websocket.send(JSON.stringify({type: "get", content: "chat", token: uuid}));
 			}
 		</script>
 	</head>
@@ -315,9 +321,11 @@
 		</div>
 		<div id="instamessage-web">
 			<div id="web-input" align="center">
-				<br /><input type="text" id="web-ip" placeholder="Enter IP Address"/>
+				<br /><input type="text" id="web-ip" class="web-input" placeholder="Enter IP Address"/>
 				<br />
-				<br /><input type="password" id="web-password" placeholder="Enter Password"/>
+				<br /><input type="text" id="web-username" class="web-input" placeholder="Enter Username"/>
+				<br />
+				<br /><input type="password" id="web-password" class="web-input" placeholder="Enter Password"/>
 				<br />
 				<br /><button id="web-connect" onclick="connect();
 				">Connect</button>
