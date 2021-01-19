@@ -138,7 +138,7 @@
 			}
 				
 			#main-instamessage {
-				background-image: URL('https://pixabay.com/get/55e6d644485ba514f6d1867dda293e771736dee3514c704f742e7bd4904bc25e_1920.jpg');
+				background-image: URL('https://pixabay.com/images/download/code-3637299_1920.jpg');
 				background-repeat: no-repeat;
 				background-position: 50% 6%;
 				background-origin: padding-box;
@@ -266,7 +266,7 @@
 				ipAddress = document.getElementById("web-ip").value;
 				password = document.getElementById("web-password").value;
 				
-				websocket = new WebSocket("ws://"+ipAddress+":63439");
+				websocket = new WebSocket("wss://"+ipAddress+":63439");
 				websocket.onopen = onOpen;
 				websocket.onmessage = onMessage;
 				websocket.onerror = onError;
@@ -323,7 +323,7 @@
 			<span id="instamessage-title"> Instamessage </span>
 			<span id="instamessage-subtitle"> The self-hosted messaging service. </span>
 			<span id="instamessage-projectPage" onclick="window.location.href = 'https://github.com/SysPoe/Instamessage'"> See On Github </span>
-			<span id="instamessage-releases" onclick="window.location.href = 'https://github.com/SysPoe/Instamessage/releases'"> Download </span>
+			<span id="instamessage-releases" onclick="window.location.href = 'https://github.com/SysPoe/Instamessage/releases/latest'"> Download </span>
 			<span id="instamessage-otherprojects" onclick="ProjectsBySyspoe();"> Other Projects </span>
 		</div>
 		<div id="instamessage-web">
