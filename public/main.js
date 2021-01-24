@@ -74,7 +74,7 @@ function onLoad() {
 	});
     */
     
-    mainTitle();
+    setTimeout(mainTitle, 2000);
 }
 function Instamessage() {
     document.getElementById('main').style.display = 'none';
