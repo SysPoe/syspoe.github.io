@@ -36,6 +36,12 @@
 					left: 45vw;
 				}
 			}
+            
+            @keyframes fadeIn {
+                to {
+                    color: #ffffff;
+                }
+            }
 			
 			#instamessage-title {
 				font-family: sans-serif;
@@ -73,6 +79,7 @@
 				position: absolute;
 				top: 9.5vh;
 				left: 70vw;
+				text-decoration: none;
 				animation-name: fromside;
 				animation-delay: 2s;
 				animation-duration: 2s;
@@ -93,6 +100,7 @@
 				position: absolute;
 				top: 12vh;
 				left: 70vw;
+				text-decoration: none;
 				animation-name: fromside;
 				animation-delay: 2.2s;
 				animation-duration: 2s;
@@ -113,6 +121,7 @@
 				position: absolute;
 				top: 14.5vh;
 				left: 70vw;
+				text-decoration: none;
 				animation-name: fromside;
 				animation-delay: 2.4s;
 				animation-duration: 2s;
@@ -137,22 +146,33 @@
 				font-size: 40px;
 				float: left;
 				
-				width: 75%;
-				padding: 47.5vh 0;
-				
-				background-position: 50% 40%;
-				background-repeat: no-repeat;
+				width: 100%;
+                height: 50%;
+                padding-top: 24%;
 			}
-			#sidebar {
-				color: white;
-				background-color: black;
-				
-				font-size: 30px;
-				
-				text-align: center;
-				
-				float: left;
-				width: 25%;
+            #main-subtitle {
+                color: #000000;
+                
+				width: 100%;
+                
+                text-align: center;
+                
+                font-family: monospace;
+                font-size: 14px;
+                
+                animation-name: fadeIn;
+                animation-duration: 1s;
+                animation-delay: 1.05s;
+                animation-fill-mode: forwards;
+            }
+			#main-projects {
+                width: 100%;
+                height: 97vh;
+                text-align: center;
+                
+                color: #ffffff;
+                
+                font-size: 30px;
 			}
 				
 			#instamessage-web {
@@ -201,8 +221,6 @@
 			}
 			
 			* {
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
 				text-rendering: optimizeLegibility;
 				
 				margin: 0;
@@ -211,7 +229,6 @@
 				-ms-user-select:none;
 				-moz-user-select:none;
 				-webkit-user-select:none;
-				-webkit-touch-callout: none;
 				-khtml-user-select: none;
 				user-select:none;
 			}
@@ -220,7 +237,7 @@
 			}
 			
 			.noscript {
-				width: 100%;
+				width: 100vw;
 				color: white;
 				background-color: red;
 				text-align: center;
@@ -229,39 +246,7 @@
 			
 		</style>
 		<script>
-			function onLoad() {
-				console.log(window.location.hash);
-				if (window.location.hash == "#Instamessage") {
-					Instamessage();
-				} else if (window.location.hash == "#Instamessage-Web") {
-					InstamessageWeb();
-				}
-				const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) / 1.5;
-				document.getElementById('main-title').style.backgroundImage ='URL(\'https://images.pexels.com/photos/2061168/pexels-photo-2061168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h='+vh+'\')';
-				setInterval(function() {
-					const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) / 1.5;
-					document.getElementById('main-title').style.backgroundImage ='URL(\'https://images.pexels.com/photos/2061168/pexels-photo-2061168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h='+vh+'\')';
-				}, 300);
-				document.getElementById("web-send-message").addEventListener("keyup", function(event) {
-					if (event.keyCode == 13) {
-						websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
-						document.getElementById("web-send-message").value = "";
-					}
-				});
-			}
-			function Instamessage() {
-				document.getElementById('main').style.display = 'none';
-				document.getElementById('instamessage').style.display = 'block';
-				document.title = "Instamessage By SysPoe";
-				window.location.hash = "#Instamessage";
-			}
-			function ProjectsBySyspoe() {
-				document.getElementById('main').style.display = 'block';
-				document.getElementById('instamessage').style.display = 'none';
-				document.getElementById('instamessage-web').style.display = 'none';
-				document.title = "Projects By SysPoe";
-				window.location.hash = "";
-			}
+            /*
 			function InstamessageWeb() {
 				document.getElementById('main').style.display = 'none';
 				document.getElementById('instamessage-web').style.display = 'block';
@@ -323,6 +308,62 @@
 				websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
 				document.getElementById("web-send-message").value = "";
 			}
+            */
+            
+			function onLoad() {
+				console.log(window.location.hash);
+				if (window.location.hash == "#Instamessage") {
+					Instamessage();
+				}
+				/* document.getElementById("web-send-message").addEventListener("keyup", function(event) {
+					if (event.keyCode == 13) {
+						websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
+						document.getElementById("web-send-message").value = "";
+					}
+				});
+                */
+                
+                mainTitle();
+			}
+			function Instamessage() {
+				document.getElementById('main').style.display = 'none';
+				document.getElementById('instamessage').style.display = 'block';
+				document.title = "Instamessage By SysPoe";
+				window.location.hash = "#Instamessage";
+			}
+			function ProjectsBySyspoe() {
+				document.getElementById('main').style.display = 'block';
+				document.getElementById('instamessage').style.display = 'none';
+				document.getElementById('instamessage-web').style.display = 'none';
+				document.title = "Projects By SysPoe";
+				window.location.hash = "";
+			}
+            function mainTitle() {
+                                setTimeout(function() {
+                    document.getElementById("main-title").innerHTML = "S";
+                }, 150);
+                
+                setTimeout(function() {
+                    document.getElementById("main-title").innerHTML = "Sy";
+                }, 300);
+                
+                setTimeout(function() {
+                    document.getElementById("main-title").innerHTML = "Sys";
+                }, 450);
+                
+                setTimeout(function() {
+                    document.getElementById("main-title").innerHTML = "SysP";
+                }, 600);
+                
+                setTimeout(function() {
+                    document.getElementById("main-title").innerHTML = "SysPo";
+                }, 750);
+                
+                setTimeout(function() {
+                    document.getElementById("main-title").innerHTML = "SysPoe";
+                }, 900);
+            }
+            
 		</script>
 	</head>
 	<body onLoad="onLoad();">
@@ -330,22 +371,21 @@
 			This website requires javascript to function!
 		</noscript>
 		<div id="main">
-			<div id="main-title">SysPoe</div>
-			<div id="sidebar">
-				Projects:
-				<br /><a href="#Instamessage" onclick="Instamessage();">Instamessage</a>
-				<br /><a onclick="InstamessageWeb();" href="#Instamessage-Web">Instamessage Web</a>
-			</div>
+			<div id="main-title"></div>
+            <div id="main-subtitle">Likes coding in Java and HTML</div>
+            <div style="font-size:26vh;">idk what to put here</div>
+            <div id="main-projects">Projects
+            </div>
 		</div>
 		<div id="instamessage">
 			<span id="instamessage-title"> Instamessage </span>
 			<span id="instamessage-subtitle"> The self-hosted messaging service. </span>
-			<span id="instamessage-projectPage" onclick="window.location.href = 'https://github.com/SysPoe/Instamessage'"> See On Github </span>
-			<span id="instamessage-releases" onclick="window.location.href = 'https://github.com/SysPoe/Instamessage/releases/latest'"> Download </span>
-			<span id="instamessage-otherprojects" onclick="ProjectsBySyspoe();"> Other Projects </span>
+			<a id="instamessage-projectPage" href="https://github.com/SysPoe/Instamessage"> See On Github </a>
+			<a id="instamessage-releases" href="https://github.com/SysPoe/Instamessage/releases/latest"> Download </a>
+			<a id="instamessage-otherprojects" onclick="ProjectsBySyspoe();" href="#"> Other Projects </a>
 		</div>
 		<div id="instamessage-web">
-			<div id="web-input" align="center">
+			<!-- <div id="web-input" align="center">
 				<br /><input type="text" id="web-ip" class="web-input" placeholder="Enter IP Address"/>
 				<br />
 				<br /><input type="text" id="web-username" class="web-input" placeholder="Enter Username"/>
@@ -364,7 +404,9 @@
 				<input placeholder="Send a message" id="web-send-message">
 				<button onclick="sendMessage();">Send</button>
 			</div>
-			<button onclick="ProjectsBySyspoe();">Back</button>
+            -->
+            Instamessage web is currently not functioning
+            <br /><button onclick="ProjectsBySyspoe();">Back</button>
 		</div>
 	</body>
 </html>
