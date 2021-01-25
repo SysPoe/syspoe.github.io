@@ -60,12 +60,12 @@ function sendMessage() {
     websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
     document.getElementById("web-send-message").value = "";
 }
-*/    
+*/
 function onLoad() {
-	console.log(window.location.hash);
+    console.log(window.location.hash);
     if (window.location.hash == "#Instamessage") {
         Instamessage();
-	}
+    }
     /* document.getElementById("web-send-message").addEventListener("keyup", function(event) {
         if (event.keyCode == 13) {
 			websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
@@ -73,44 +73,47 @@ function onLoad() {
         }
 	});
     */
-    
-    setTimeout(mainTitle, 2000);
+
+    mainTitle();
 }
+
 function Instamessage() {
     document.getElementById('main').style.display = 'none';
-	document.getElementById('instamessage').style.display = 'block';
-	document.title = "Instamessage By SysPoe";
-	window.location.hash = "#Instamessage";
+    document.getElementById('instamessage').style.display = 'block';
+    document.title = "Instamessage By SysPoe";
+    window.location.hash = "#Instamessage";
 }
+
 function ProjectsBySyspoe() {
     document.getElementById('main').style.display = 'block';
-	document.getElementById('instamessage').style.display = 'none';
-	document.getElementById('instamessage-web').style.display = 'none';
-	document.title = "Projects By SysPoe";
+    document.getElementById('instamessage').style.display = 'none';
+    document.getElementById('instamessage-web').style.display = 'none';
+    document.title = "Projects By SysPoe";
     window.location.hash = "";
 }
+
 function mainTitle() {
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById("main-title").innerHTML = "S";
     }, 150);
-                
-    setTimeout(function() {
+
+    setTimeout(function () {
         document.getElementById("main-title").innerHTML = "Sy";
     }, 300);
-                
-    setTimeout(function() {
+
+    setTimeout(function () {
         document.getElementById("main-title").innerHTML = "Sys";
     }, 450);
-                
-    setTimeout(function() {
+
+    setTimeout(function () {
         document.getElementById("main-title").innerHTML = "SysP";
     }, 600);
-                
-    setTimeout(function() {
+
+    setTimeout(function () {
         document.getElementById("main-title").innerHTML = "SysPo";
     }, 750);
 
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById("main-title").innerHTML = "SysPoe";
     }, 900);
 }
