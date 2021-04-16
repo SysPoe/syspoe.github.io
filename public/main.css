@@ -1,34 +1,3 @@
-@keyframes title {
-    from {
-        top: 10vh;
-        color: #0f0f0f;
-    }
-
-    to {}
-
-}
-
-@keyframes subtitle {
-    from {
-        top: 30vh;
-        color: #0f0f0f;
-    }
-
-    to {}
-}
-
-@keyframes fromside {
-    from {
-        color: #0f0f0f;
-        left: 50vw;
-    }
-
-    to {
-        color: #ffffff;
-        left: 45vw;
-    }
-}
-
 @keyframes fadeIn {
     from {
         color: rgba(0, 0, 0, 0);
@@ -39,17 +8,15 @@
     }
 }
 
+#instamessage {
+    text-align: center;
+}
+
 #instamessage-title {
     font-family: sans-serif;
     font-size: 56px;
     text-align: center;
     color: #ffffff;
-    animation-name: title;
-    animation-duration: 2s;
-    position: absolute;
-    top: 0px;
-    left: 0.5vw;
-    width: 99vw;
 }
 
 #instamessage-subtitle {
@@ -57,79 +24,33 @@
     font-size: 1vw;
     color: #a1a1a1;
     text-align: center;
-    animation-name: subtitle;
-    animation-duration: 2s;
-    position: absolute;
-    left: 0.5vw;
-    width: 99vw;
-    top: 7vh;
 }
 
 #instamessage-projectPage {
     font-family: sans-serif;
-    color: #0f0f0f;
+    color: #ffffff;
     font-size: 0.8vw;
     display: block;
     width: 10vw;
     text-align: center;
-    position: absolute;
-    top: 9.5vh;
-    left: 70vw;
-    text-decoration: none;
-    animation-name: fromside;
-    animation-delay: 2s;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
 }
 
 #instamessage-projectPage:hover {
     text-decoration: underline;
 }
 
-#instamessage-releases {
+#instamessage a {
     font-family: sans-serif;
-    color: #0f0f0f;
-    font-size: 0.8vw;
-    display: block;
-    width: 10vw;
+    color: #ffffff;
+    font-size: 17px;
     text-align: center;
-    position: absolute;
-    top: 12vh;
-    left: 70vw;
     text-decoration: none;
-    animation-name: fromside;
-    animation-delay: 2.2s;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
+    transition: all 0.2s ease-in-out;
+
 }
 
-#instamessage-releases:hover {
-    text-decoration: underline;
-}
-
-#instamessage-otherprojects {
-    font-family: sans-serif;
-    color: #0f0f0f;
-    font-size: 0.8vw;
-    display: block;
-    width: 10vw;
-    text-align: center;
-    position: absolute;
-    top: 14.5vh;
-    left: 70vw;
-    text-decoration: none;
-    animation-name: fromside;
-    animation-delay: 2.4s;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-}
-
-#instamessage-otherprojects:hover {
-    text-decoration: underline;
-}
-
-#instamessage {
-    display: none;
+#instamessage a:hover {
+    color: #3a7e99;
 }
 
 #main {
@@ -140,7 +61,7 @@
     color: white;
     text-align: center;
 
-    font-family: 'Times New Roman';
+    font-family: 'Times New Roman', sans-serif;
     font-size: 40px;
     float: left;
 
@@ -181,7 +102,7 @@
 }
 
 #web-input {
-    font-family: 'Arial';
+    font-family: 'Arial', serif;
     padding: 10px;
 }
 
@@ -229,7 +150,6 @@ body {
     -ms-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    -khtml-user-select: none;
     user-select: none;
 }
 
@@ -247,5 +167,11 @@ br {
 
 #main-title-container {
     height: 100vh;
-    background-image: URL('recources/code%202.png');
+    background-image: URL("recources/code 2.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.main-title-container-scroll {
+    height: 10vw;
 }
