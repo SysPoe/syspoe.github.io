@@ -27,7 +27,7 @@
 }
 
 #instamessage-projectPage {
-    font-family: "Arial" sans-serif;
+    font-family: sans-serif;
     color: #ffffff;
     font-size: 0.8vw;
     display: block;
@@ -40,7 +40,7 @@
 }
 
 #instamessage a {
-    font-family: "Arial" sans-serif;
+    font-family: sans-serif;
     color: #ffffff;
     font-size: 17px;
     text-align: center;
