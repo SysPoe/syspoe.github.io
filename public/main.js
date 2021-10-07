@@ -61,13 +61,6 @@ function sendMessage() {
     document.getElementById("web-send-message").value = "";
 }
 */
-
-var html;
-console.log(window.location.hash);
-if (window.location.hash === "#Instamessage") {
-    Instamessage();
-}
-html = document.getElementsByTagName("html")[0];
 /* document.getElementById("web-send-message").addEventListener("keyup", function(event) {
     if (event.keyCode == 13) {
 		websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
@@ -76,21 +69,6 @@ html = document.getElementsByTagName("html")[0];
 });
 */
 mainTitle();
-
-function Instamessage() {
-    document.getElementById('main').style.display = 'none';
-    document.getElementById('instamessage').style.display = 'block';
-    document.title = "Instamessage By SysPoe";
-    window.location.hash = "#Instamessage";
-}
-
-function ProjectsBySyspoe() {
-    document.getElementById('main').style.display = 'block';
-    document.getElementById('instamessage').style.display = 'none';
-    document.getElementById('instamessage-web').style.display = 'none';
-    document.title = "Projects By SysPoe";
-    window.location.hash = "";
-}
 
 function mainTitle() {
     setTimeout(function () {
@@ -116,4 +94,8 @@ function mainTitle() {
     setTimeout(function () {
         document.getElementById("main-title").innerHTML = "SysPoe";
     }, 900);
+
+    setTimeout(function () {
+        document.getElementById("main-subtitle").classList.add("main-subtitle-animation")
+    }, 1050)
 }

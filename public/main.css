@@ -71,10 +71,11 @@
 
     font-family: monospace;
     font-size: 14px;
+}
 
+.main-subtitle-animation {
     animation-name: fadeIn;
     animation-duration: 1s;
-    animation-delay: 1.05s;
     animation-fill-mode: forwards;
 }
 
