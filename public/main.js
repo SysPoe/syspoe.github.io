@@ -63,23 +63,19 @@ function sendMessage() {
 */
 
 var html;
-
-function onLoad() {
-    console.log(window.location.hash);
-    if (window.location.hash === "#Instamessage") {
-        Instamessage();
-    }
-    html = document.getElementsByTagName("html")[0];
-    /* document.getElementById("web-send-message").addEventListener("keyup", function(event) {
-        if (event.keyCode == 13) {
-			websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
-            document.getElementById("web-send-message").value = "";
-        }
-	});
-    */
-
-    mainTitle();
+console.log(window.location.hash);
+if (window.location.hash === "#Instamessage") {
+    Instamessage();
 }
+html = document.getElementsByTagName("html")[0];
+/* document.getElementById("web-send-message").addEventListener("keyup", function(event) {
+    if (event.keyCode == 13) {
+		websocket.send(JSON.stringify({type: "chat", content: document.getElementById("web-send-message").value, token: uuid}));
+        document.getElementById("web-send-message").value = "";
+    }
+});
+*/
+mainTitle();
 
 function Instamessage() {
     document.getElementById('main').style.display = 'none';
